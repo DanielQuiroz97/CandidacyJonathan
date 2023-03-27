@@ -9,5 +9,5 @@ mkdir QC QC/MultiQC
 apptainer exec 2_Software/fastqc.sif fastqc --threads 27 Question2/1_Data/*fastq.gz --outdir=Question2/QC/
 
 ## Running MultiQC
-apptainer exec 2_Software/MultiQC.sif multiqc Question2/QC/ --interactive -o Question2/QC//MultiQC 
+apptainer exec 2_Software/MultiQC.sif multiqc Question2/QC/ --interactive -o Question2/QC/MultiQC 
 
