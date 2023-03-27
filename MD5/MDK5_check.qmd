@@ -1,0 +1,66 @@
+---
+title: "MD5"
+author: "Danielito"
+format: gfm
+editor: visual
+---
+
+# MD5 check sum
+
+In document will be comparing the provided MD5 with a new MD5 output
+
+created for all fastq.gz files.
+
+## Loading libraries
+
+```{r}
+library(tidyverse)
+```
+
+## Loading data
+
+```{r}
+provided_md5 <- read.csv(file = "AppleIntegrity.md5", header = F,
+                         sep = "=")
+provided_md5
+```
+
+### Checking all MD5 are unique ID
+
+```{r}
+nrow(provided_md5)
+length(unique(provided_md5$V2))
+```
+
+All MD5 are unique, we have 76 rows and 76 unique ID
+
+```{r}
+names(provided_md5) <- c("Sample_old", "MD5")
+provided_md5 <- provided_md5 %>% 
+  mutate(MD5 =  stringi::stri_trim_both(MD5))
+```
+
+## Importing the new MD5 check sum
+
+```{r}
+new_md5 <- read_csv2("new_MD5.txt", col_names = F)  %>%
+  separate(col = "X1", into = c("MD5", "Sample_new"), sep = "  ") %>% 
+  mutate(MD5 = stringi::stri_trim_both(MD5))
+```
+
+Now, if we join the tables using the MD5 id as unique ID, we can see what files
+
+have identical MD5
+
+```{r}
+md5_check <- left_join(provided_md5, new_md5)
+md5_check
+```
+
+Another way that we can test if the MD5 identifiers match, is making an string match
+
+```{r}
+provided_md5$MD5 %in% new_md5$MD5
+```
+
+As we get all \`TRUE\` results, all MD5 check sum matches with the provided MD5 list
