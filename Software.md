@@ -1,10 +1,9 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2708
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww16940\viewh10000\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+# Software installation
 
-\f0\fs24 \cf0 # Script related to software installation\
-\
-}
+## FASTQC
+apptainer pull fastqc.sif docker://quay.io/biocontainers/fastqc:0.11.9--hdfd78af_1
+
+
+MultiQC
+
+apptainer pull MultiQC.sif docker://quay.io/biocontainers/multiqc:1.13--pyhdfd78af_0
