@@ -2,8 +2,14 @@
 # Variant Calling
 
 ```
+cd /fs/scratch/PAS1755/Jonathan/Daniel_Candidacy/Question1/Alignment
+
 mkdir VC
 
-ls 7_Alignment/Read_group/*.bam  | awk -F '/' '{print $3}' | awk -F '.' '{print $1}' | sort | uniq > 8_Variant_calling/ID
-cat 8_Variant_calling/ID
+for i in `cat ID`
+do
+   echo ../../2_Software/freebayes -f ../Reference/GDDH13_1-1_formatted.fasta.gz Read_group/$i\_sorted_rd.bam > VC/$i.vcf
+done
+
+
 ```
