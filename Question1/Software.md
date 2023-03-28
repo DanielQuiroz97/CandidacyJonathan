@@ -37,3 +37,22 @@ wget https://github.com/freebayes/freebayes/releases/download/v1.3.6/freebayes-1
 chmod 777 freebayes-1.3.6-linux-amd64-static.gz
 
 ```
+
+
+## Picard
+
+
+```
+module load picard/2.3.0
+```
+
+
+## Agat
+
+```
+# get the chosen AGAT container version
+singularity pull docker://quay.io/biocontainers/agat:1.0.0--pl5321hdfd78af_0
+# run the container
+singularity run agat_1.0.0--pl5321hdfd78af_0.sif
+
+```

@@ -43,12 +43,17 @@ align(index="Reference/Malus_Index",readfile1="1_Data/Skin_Sample3_R1.fastq.gz",
 ## Fixing gff3
 
 ```
-grep 'ID= ""' genes.gff3
-grep -v 'ID= ""'genes.gff3 > genes_fixed.gff3
+run ../../2_Software/agat.sif 
+agat_convert_sp_gxf2gxf.pl -g inra_genes.gff3 -o inra_clean.gff3
 ```
 
 ```
 # Feature count
-fc <- featureCounts(files=c("Flesh_S1.bam","Flesh_S2.bam","Flesh_S3.bam","Skin_S1.bam","Skin_S2.bam","Skin_S3.bam"),annot.ext="Reference/gene_moels_20170612.gff3",isGTFAnnotationFile=TRUE,GTF.featureType="gene",GTF.attrType="ID",useMetaFeatures=TRUE,countMultiMappingReads=TRUE,fraction=TRUE,genome="Reference/GDDH13_1-1_formatted.fasta.gz",isPairedEnd=TRUE,autosort=TRUE,nthreads=26)
+fc <- featureCounts(files=c("Flesh_S1.bam","Flesh_S2.bam","Flesh_S3.bam","Skin_S1.bam","Skin_S2.bam","Skin_S3.bam"),annot.ext="Reference/inra_genes.gff3",isGTFAnnotationFile=TRUE,GTF.featureType="gene",GTF.attrType="ID",useMetaFeatures=TRUE,countMultiMappingReads=TRUE,fraction=TRUE,genome="Reference/GDDH13_1-1_formatted.fasta.gz",isPairedEnd=TRUE,autosort=TRUE,nthreads=26)
+
+write.table(x=data.frame(fc$annotation[,c("GeneID","Length")],fc$counts,stringsAsFactors=FALSE),file="SkinFleshCounts.txt",quote=FALSE,sep="\t",row.names=FALSE)
+stat=data.frame(fc$stat)
+write.csv(stat,"SkinFleshCounts.csv")
+
 ```
 
