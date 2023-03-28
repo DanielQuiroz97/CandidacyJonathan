@@ -33,8 +33,7 @@ bwa
 ## Freebayes
 
 ```
-wget https://github.com/freebayes/freebayes/releases/tag/v1.3.6
+wget https://github.com/freebayes/freebayes/releases/download/v1.3.6/freebayes-1.3.6-linux-amd64-static.gz
 chmod 777 freebayes-1.3.6-linux-amd64-static.gz
-unzip fs/ess/scratch/PAS2303/Final_Project/3_Software/freebayes-1.3.6-linux-amd64-static.gz
-/path/to/Final_Project/3_Software/freebayes-1.3.6-linux-amd64-static
+
 ```
