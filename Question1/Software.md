@@ -78,4 +78,9 @@ wget -c https://github.com/Oshlack/Corset/releases/download/version-1.09/corset-
  --with-bam_inc=<directory_containing_sam.h>
 
 ```
+# snpEff
 
+```
+wget https://snpeff.blob.core.windows.net/versions/snpEff_latest_core.zip
+unzip snpEff_latest_core.zip
+```
