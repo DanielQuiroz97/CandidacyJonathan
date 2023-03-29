@@ -39,7 +39,7 @@ sinteractive -c 28 -t 00:59:00 -J snpeff -A PAS1755
 module load java/12.0.2
 
 # Annoating SNP
-java -jar snpEff/snpEff.jar Malus vcf/merged_snp.vcf.gz > Results/snp_ann.vcf
+java -jar snpEff/snpEff.jar Malus vcf/merged_snp.vcf > Results/snp_ann.vcf
 
 # Anotating Indels 
 java -jar snpEff/snpEff.jar Malus vcf/merged_indels.vcf > Results/indels_ann.vcf
