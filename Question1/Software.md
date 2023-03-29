@@ -56,3 +56,9 @@ singularity pull docker://quay.io/biocontainers/agat:1.0.0--pl5321hdfd78af_0
 singularity run agat_1.0.0--pl5321hdfd78af_0.sif
 
 ```
+
+## Trinity
+
+```
+wget -chttps://data.broadinstitute.org/Trinity/TRINITY_SINGULARITY/trinityrnaseq.v2.15.1.simg
+```
