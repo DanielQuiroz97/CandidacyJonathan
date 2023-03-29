@@ -62,3 +62,20 @@ singularity run agat_1.0.0--pl5321hdfd78af_0.sif
 ```
 wget -chttps://data.broadinstitute.org/Trinity/TRINITY_SINGULARITY/trinityrnaseq.v2.15.1.simg
 ```
+## Samtools
+
+```
+git clone git://github.com/samtools/samtools.git  
+
+```
+
+# Corset
+
+```
+wget -c https://github.com/Oshlack/Corset/releases/download/version-1.09/corset-1.09-linux64.tar.gz
+
+./configure \
+ --with-bam_inc=<directory_containing_sam.h>
+
+```
+
