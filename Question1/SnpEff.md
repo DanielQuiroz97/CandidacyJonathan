@@ -46,4 +46,37 @@ java -jar snpEff/snpEff.jar Malus vcf/merged_indels.vcf > Results/indels_ann.vcf
 
 ```
 
+## Filtering snpEff vcf
+
+### Indels
+
+```
+mkdir Filtering
+
+
+cat indels_ann.vcf | grep -v "#" | grep "HIGH" | cut -f 1,2,8 | sed 's/|/\t/g' | grep -v "intergenic\|stream\|UTR" > Filtering/redundant_indels_table.txt
+
+
+cd Filtering
+
+cat redundant_indels_table.txt | cut -f 1,2,5,6 | uniq | sort > clean_indels_chromGene.txt
+
+
+cat clean_indels_chromGene.txt | cut -f 4 | uniq > unique_indels_gene_list.txt
+```
+
+### SNP
+
+
+```
+cat snp_ann.vcf | grep -v "#" | grep "HIGH" | cut -f 1,2,8 | sed 's/|/\t/g' | grep -v "intergenic\|stream\|UTR" > Filtering/redundant_snp_table.txt
+
+
+cd Filtering
+
+cat redundant_snp_table.txt | cut -f 1,2,5,6 | uniq | sort > clean_snp_chromGene.txt
+
+
+cat clean_snp_chromGene.txt | cut -f 4 | uniq > unique_snp_gene_list.txt
+```
 

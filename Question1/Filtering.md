@@ -26,6 +26,13 @@ do
 done
 ```
 
+ ## Quality control
+
+```
+ rtg-tools/dist/rtg-tools-3.12.1-32d4c2d/rtg vcfstats merged_indel.vcf > merged_indel.txt
+  rtg-tools/dist/rtg-tools-3.12.1-32d4c2d/rtg vcfstats merged_indel.vcf > merged_indel.txt
+```
+
 
 ## Filtering
 
