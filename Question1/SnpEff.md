@@ -80,3 +80,21 @@ cat redundant_snp_table.txt | cut -f 1,2,5,6 | uniq | sort > clean_snp_chromGene
 cat clean_snp_chromGene.txt | cut -f 4 | uniq > unique_snp_gene_list.txt
 ```
 
+# Merging snp and indels
+
+
+```
+module load htslib/1.6
+
+module load bcftools/1.3.1
+
+bgzip -c merged_snp.vcf > merged_snp.vcf.gz
+bgzip -c merged_indels.vcf > merged_indels.vcf.gz
+
+bcftools index merged_indels.vcf.gz
+bcftools index merged_snp.vcf.gz
+
+bcftools merge  merged_indels.vcf.gz  merged_snp.vcf.gz -o merged_indels_snp.vcf.gz
+
+
+```

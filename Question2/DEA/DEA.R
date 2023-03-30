@@ -39,7 +39,8 @@ count_type <- exp %>% mutate(Genes = rownames(.)) %>%
   
 write.csv(count_type, file = "Count_type.csv")
 
-count_type %>% ungroup %>% group_by(Type, Depth) %>% count() %>% 
-  ggplot(aes(Depth, n, fill = Type)) + geom_col(position = "dodge") + coord_flip() +
+count_type %>% ungroup %>% group_by(Type, Deepth) %>% count() %>% 
+  ggplot(aes(Deepth, n, fill = Type)) + 
+  geom_col(position = "dodge") + coord_flip() +
   theme_classic() + ggsci::scale_fill_aaas(alpha = 0.7) + 
-  labs(fill = "Apple matrix", y = "Gene counts", x = "Sequencing depth")
+  labs(fill = "Apple matrix", y = "Number of genes", x = "Sequencing depth")
