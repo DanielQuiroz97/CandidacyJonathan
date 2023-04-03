@@ -1,6 +1,7 @@
 # Then start the analysis:
 library(edgeR)
 library(tidyverse)
+library(VennDiagram)
 
 exp <- read.delim("../Alignment/SkinFleshCounts.txt", header=TRUE, row.names="GeneID") %>% 
   dplyr::select(-Length)
@@ -44,3 +45,14 @@ count_type %>% ungroup %>% group_by(Type, Deepth) %>% count() %>%
   geom_col(position = "dodge") + coord_flip() +
   theme_classic() + ggsci::scale_fill_aaas(alpha = 0.7) + 
   labs(fill = "Apple matrix", y = "Number of genes", x = "Sequencing depth")
+
+# Venn diagram
+
+high_skin <- count_type %>% filter(Type == "Skin", Deepth == "High")
+high_skin <- high_skin$Genes
+
+high_flesh <- count_type %>% filter(Type == "Flesh", Deepth == "High")
+high_flesh <- high_flesh$Genes
+
+venn.diagram(x = list(high_flesh, high_skin), 
+             category.names = c("Flesh", "Skin"), filename = "venn.png")
